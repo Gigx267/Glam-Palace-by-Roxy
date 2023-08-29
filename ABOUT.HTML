@@ -1,0 +1,214 @@
+<header>
+    <div class="wrapper">
+      <label></label>
+      <select id="highlight-style">
+        <option >Home </option>
+        <option>About </option>
+        <option>LookBook </option>
+        <option>Contact  </option>
+       
+
+      </select>
+    </div>
+    <div class="wrapper">
+     
+    </div>
+  </header>
+  
+  <main>
+    <h1>About Us </h1>
+    <p> Glam Palace by Roxy an inclusive palace of style and expression. We're a premier shopping and retail establishment that offers a unique blend of luxury, fashion-forward items, and inclusivity. Our mission is to provide a fashion haven where everyone can explore their individuality, regardless of gender, age, or personal style. At Glam Palace, we pride ourselves on curating a carefully selected collection that showcases the latest trends and timeless classics. We believe that fashion is a form of self-expression, and our diverse range of products reflects this.</p>
+  
+    
+  
+    <p>Glam Palace by Roxy caters to fashion enthusiasts of all genders. With an extensive assortment of clothing, accessories, and footwear, our unisex fashion shop breaks down traditional barriers and allows everyone to express themselves authentically. Whether you prefer to shop online or step into our welcoming physical store, we're here to make your fashion journey seamless and enjoyable. </p>
+  
+    <p>Time is of the essence, and we understand that. That's why we offer same day delivery services within Abuja, ensuring that your fashion cravings are promptly satisfied. Experience the convenience of shopping at Glam Palace, where your fashion finds are just a click away from your doorstep.</mark>.</p>
+  
+    <p>Our commitment to style knows no bounds. We're open from Monday to Saturday, from 8:00 AM to 8:00 PM, providing ample opportunity for you to explore our exquisite offerings and find the perfect ensemble that resonates with your personality. </p>
+  
+    <p>Step into the Glam Palace by Roxy, where every piece of clothing tells a story, and every accessory adds a touch of elegance. Embrace the realm of unisex fashion that transcends norms and celebrates diversity. Discover your style, define your presence, and become a part of the Glam Palace legacy.</mark>.</p>
+  
+    <p> For inquiries, orders, and style advice, connect with us online or visit our store. Glam Palace by Roxy is not just a shopping experience; it's a statement of inclusivity, luxury, and empowerment.</p>
+  
+    
+  </main>
+  <style>
+
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap");
+
+:root {
+  --bg-color-hsl: 59, 3%, 94%;
+  --bg-color: hsl(var(--bg-color-hsl));
+  --bg-color-translucent: hsla(var(--bg-color-hsl), 0.95);
+  --bg-color-highlight: hsl(60, 90%, 50%);
+  --color-text: hsl(192, 14%, 20%);
+  --color-text-highlight: hsl(192, 14%, 0%);
+  --page-width: 80ch;
+  --paragraph-font-size: min(max(1.2rem, 4vw), 1.4rem);
+  --header-font-size: min(max(2rem, 8vw), 4rem);
+  --space: 2rem;
+  --padding: 8vmin;
+  --duration: 1s;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dark-mode {
+  --bg-color-hsl: 0, 0%, 7%;
+  --bg-color: hsl(var(--bg-color-hsl));
+  --bg-color-translucent: hsla(var(--bg-color-hsl), 0.95);
+  --bg-color-highlight: hsl(238, 70%, 40%);
+  --color-text: hsl(0, 0%, 80%);
+  --color-text-highlight: hsl(0, 0%, 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lora", sans-serif;
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--bg-color);
+  transition: background calc(var(--duration) / 4) var(--ease);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: calc(var(--space) / 2) var(--padding);
+  width: 100%;
+  max-width: var(--page-width);
+  background-color: var(--bg-color-translucent);
+  transition: background calc(var(--duration) / 4) var(--ease);
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+
+    > * + * {
+      margin-left: 4px;
+    }
+  }
+}
+
+select {
+  font-family: inherit;
+  font-size: 16px;
+}
+
+label {
+  font-size: 0.8rem;
+}
+
+main {
+  margin: 12rem auto;
+  padding: 0 var(--padding);
+  max-width: var(--page-width);
+}
+
+h1 {
+  font-size: var(--header-font-size);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 4rem;
+}
+
+p {
+  margin: 2rem 0;
+  font-size: var(--paragraph-font-size);
+  line-height: 1.7;
+}
+
+.text-highlight {
+  all: unset;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: color calc(var(--duration) / 4) var(--ease),
+    background-color calc(var(--duration) / 4) var(--ease),
+    background-size var(--duration) var(--ease);
+
+  &.active {
+    color: var(--color-text-highlight);
+    background-size: 100% 100%;
+  }
+
+  [data-highlight="background"] & {
+    background-image: linear-gradient(
+      var(--bg-color-highlight),
+      var(--bg-color-highlight)
+    );
+  }
+
+  [data-highlight="half"] & {
+    --line-size: 0.5em;
+    background-image: linear-gradient(
+      transparent calc(100% - var(--line-size)),
+      var(--bg-color-highlight) var(--line-size)
+    );
+  }
+
+  [data-highlight="underline"] & {
+    --line-size: 0.15em;
+    background-image: linear-gradient(
+      transparent calc(100% - var(--line-size)),
+      var(--color-text) var(--line-size)
+    );
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    clip-path: inset(100%);
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  &::before {
+    content: " [highlight start] ";
+  }
+
+  &::after {
+    content: " [highlight end] ";
+  }
+}
+
+  </style>
+  <script>
+const highlight = document.getElementById("highlight-style");
+const mode = document.getElementById("mode");
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".text-highlight").forEach((highlight) => {
+  ScrollTrigger.create({
+    trigger: highlight,
+    start: "-100px center",
+    onEnter: () => highlight.classList.add("active")
+  });
+});
+
+const setHighlightStyle = (value) =>
+  document.body.setAttribute("data-highlight", value);
+
+mode.addEventListener("click", (e) =>
+  document.body.classList.toggle("dark-mode")
+);
+
+highlight.addEventListener("change", (e) => setHighlightStyle(e.target.value));
+
+setHighlightStyle(highlight.value);
+
+
+
+  </script>
